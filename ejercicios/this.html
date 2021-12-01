@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>This</title>
+  </head>
+  <body>
+    <h1>Abre la consola</h1>
+    <h2>¿Quién es <mark><em>This</em></mark>?</h2>
+    <p>
+      La palabra <em><b>This</b></em> en JavaScript siempre va a representar
+      algo diferente dependiendo el contexto en el que se encuentre, ya sea en
+      una función, objeto o clase.
+    </p>
+    <script>
+      //this en el scope global
+      console.log(`this: ${this}`); //this: [object window]
+
+      //this en el scope de una función
+      function whoIsThis() {
+        return this;
+      }
+
+      console.log(`whoIsThis(): ${whoIsThis()}`); //This dentro de una función intenta devolver el objeto, como la función no es un objeto, se va un nivel más arriba y encuentra Window
+
+      //this en el scope de una función en strict mode
+      function whoIsThisStrict() {
+        "use strict";
+        return this;
+      }
+
+      console.log(`whoIsThisStrict(): ${whoIsThisStrict()}`)
+
+      //this en el contexto de un objeto
+      const person = {
+          name: 'Daniel',
+          saludar: function () {
+              console.log(`Hola, soy ${this.name}.`);
+          }
+      }
+
+      person.saludar();
+      //this cuando sacamos a una función de un objeto
+      const accion = person.saludar;
+      accion(); 
+
+      //this en el contexto de una "clase"
+      function Person(name) {
+          //this = {}
+          this.name = name;
+      }
+
+      Person.prototype.saludar = function () {
+        console.log(`Me llamo ${this.name}.`);
+      }
+
+      const ely = new Person('Ely');
+      ely.saludar();
+    </script>
+  </body>
+</html>

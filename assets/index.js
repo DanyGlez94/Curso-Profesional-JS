@@ -1,7 +1,14 @@
 import MediaPlayer from './MediaPlayer.js';
+import AutoPlay from './plugins/AutoPlay.js';
 
 const video = document.querySelector('video');
-const button = document.querySelector('button');
+const playButton = document.getElementById('playButton');
+const muteButton = document.getElementById('muteButton');
 
-const player = new MediaPlayer({ el: video}); //Crea el objeto "player" de la clase MediaPlayer
-button.onclick = () => player.play();
+const player = new MediaPlayer({ 
+    el: video, 
+    plugins: [/*new AutoPlay()*/] 
+}); //Crea el objeto "player" de la clase MediaPlayer
+
+playButton.onclick = () => player.play();
+muteButton.onclick = () => player.mute();
