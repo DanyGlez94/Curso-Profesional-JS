@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Call - Apply - Bind</title>
+  </head>
+  <body>
+    <h1>Abre la consola</h1>
+    <h2>Call - Apply - Bind</h2>
+    <ul>
+        <li><button class="call-to-action">Aprender</button></li> 
+        <li><button class="call-to-action">Aprender más</button></li> 
+        <li><button class="call-to-action">Nunca parar de aprender</button></li> 
+    </ul>
+    <script>
+        //Establece 'this' usando 'call'
+        function saludar() {
+            console.log(`Hola, soy ${this.name} ${this.apellido}.`);
+        }
+
+        const daniel = {
+            name: 'Daniel',
+            apellido: 'González'
+        }
+
+        saludar.call(daniel)
+
+        //Establece 'this' usando 'call' y pasar argumentos a la función
+        function caminar(metros, direccion) {
+            console.log(`${this.name} camina ${metros} metros hacia el ${direccion}.`);
+        }
+
+        caminar.call(daniel, 400, 'norte')
+
+        //Establece 'this' usando 'apply' y pasar argumentos a la función
+        const valores = [800, 'noreste'];
+        caminar.apply(daniel, valores);
+
+        /*
+            Call - los argumnetos se separan por comas
+            Apply - los argumentos se separan por arreglos
+        */
+
+        //Establece 'this' en una nueva función usando 'bind'
+         const ely = {name: 'Ely', apellido: 'Zaragoza'};
+         const elySaluda = saludar.bind(ely);
+        elySaluda();
+
+        const elyCamina = caminar.bind(ely);
+        elyCamina(1000, 'este');
+
+        //Cuando es útil usar uno de estos métodos
+        const buttons = document.getElementsByClassName('call-to-action');
+        // buttons.forEach(button => {
+        //     button.onclick = () => alert('Nunca pares de aprender');
+        // });
+
+        Array.prototype.forEach.call(buttons, button => {
+            button.onclick = () => alert('Nunca pares de aprender');
+        });
+
+    </script>
+  </body>
+</html>
