@@ -7,7 +7,7 @@ const muteButton = document.getElementById('muteButton');
 
 const player = new MediaPlayer({ 
     el: video, 
-    plugins: [/*new AutoPlay()*/] 
+    plugins: [new AutoPlay()] 
 }); //Crea el objeto "player" de la clase MediaPlayer
 
 playButton.onclick = () => player.play();
