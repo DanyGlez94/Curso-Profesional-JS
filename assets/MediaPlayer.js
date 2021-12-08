@@ -28,8 +28,17 @@ MediaPlayer.prototype.play = function() { //Agregamos el método play
 // } else {
 //     this.media.pause();
 // }
-    this.media.paused ? this.media.play() : this.media.pause();
+    // this.media.paused ? this.media.play() : this.media.pause();
+    this.media.play();
 };
+
+MediaPlayer.prototype.pause = function() {
+    this.media.pause();
+}
+
+MediaPlayer.prototype.togglePlay = function() {
+    this.media.paused ? this.play() : this.pause();
+}
 
 MediaPlayer.prototype.mute = function() {
     this.media.muted = !this.media.muted;
