@@ -1,0 +1,16 @@
+{
+  "name": "@danyglez/platzimediaplayer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc src/**/*.ts src/plugins/*.ts src/plugins/Ads/*.ts --outDir lib",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Daniel González Herrera",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^4.5.3"
+  }
+}
